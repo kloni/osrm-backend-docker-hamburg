@@ -9,5 +9,5 @@ script:
   - docker run klonikt/osrm-backend-hamburg /usr/local/bin/osrm-routed --version
 
 after_success:
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push klonikt/osrm-backend-hamburg
