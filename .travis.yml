@@ -3,11 +3,11 @@ services:
   - docker
 
 before_install:
-  - docker build -t $DOCKER_USERNAME/osrm-backend-hamburg .
+  - docker build -t $DOCKER_ID/osrm-backend-hamburg .
 
 script:
-  - docker run $DOCKER_USERNAME/osrm-backend-hamburg /usr/local/bin/osrm-routed --version
+  - docker run $DOCKER_ID/osrm-backend-hamburg /usr/local/bin/osrm-routed --version
 
 after_success:
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push $DOCKER_USERNAME/osrm-backend-hamburg
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push $DOCKER_ID/osrm-backend-hamburg
