@@ -8,3 +8,16 @@ before_install:
 script:
   - docker run klonikt/osrm-backend-docker-hamburg /usr/local/bin/osrm-routed --version
 
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-central-1"
+  app: "osrm-hamburg"
+  env: "OsrmHamburg-env"
+  bucket_name: "elasticbeanstalk-eu-central-1-309004584371"
+  bucket_path: "osrm-hamburg"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
+
